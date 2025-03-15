@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas class="canvas" width="300" height="300" style="border: 1px solid black;"></canvas>
+    <div class="btns"></div>
+    <button onclick="load(png)">png</button>
+    <button onclick="load(jpg)">jpg</button>
+</body>
+</html>
+<script>
+    const btns=document.querySelector(".btns")
+    const canvas=document.querySelector(".canvas")
+    const ctx=canvas.getContext("2d")
+
+    ctx.fillRect(300,300,0,0)
+
+    let color="black"
+    const colors=["black","orange","red","blue","green"]
+    for(let i=0;i<colors.length;i++){
+        const btn=document.createElement("div")
+        btn.classList.add("btn")
+        btn.style.background=colors[i]
+        btn.addEventListener("click",()=>{
+            colorSelect(colors[i])
+        })
+        btns.appendChild(btn)
+    }
+    function colorSelect(aaa){
+        color=aaa
+        // console.log(color);
+    }
+
+    let flag=false
+    canvas.addEventListener("mousedown",(e)=>{
+        flag=true
+        ctx.clearRect(300,300,0,0)
+        ctx.beginPath()
+        ctx.strokeStyle=color
+        ctx.lineWidth=2
+        ctx.moveTo(e.offsetX,e.offsetY)
+    })
+    canvas.addEventListener("mousemove",(e)=>{
+        if(flag){
+            ctx.lineTo(e.offsetX,e.offsetY)
+            ctx.stroke()
+        }
+    })
+    canvas.addEventListener("mouseup",()=>{
+        flag=false
+    })
+
+    function load(type){
+        const a=document.createElement("a")
+        a.download=`test.${type}`
+        a.href=canvas.toDataURL(`img/${type}`)
+        a.click()
+    }
+</script>
+<style>
+    .btns{
+        display: flex;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+    }
+</style>

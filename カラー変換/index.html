@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="inp">
+    <button onclick="a()">henkan</button>
+    <p class="result"></p>
+</body>
+
+</html>
+<script>
+    const result=document.querySelector(".result")
+    function a(){
+        const inp=document.querySelector(".inp").value
+        const isRGB=inp.startsWith("rgb(")
+        const isHEX=inp.startsWith("#")
+        if(isRGB){
+            let arr1=inp.replace("rgb(","")
+            let arr2=arr1.replace(")","")
+            let len=arr2.split(",")
+            let hex1=Number(len[0]).toString(16).toUpperCase()
+            let hex2=Number(len[1]).toString(16).toUpperCase()
+            let hex3=Number(len[2]).toString(16).toUpperCase()
+            // console.log((255).toString(16));
+            
+            e(`#${hex1}${hex2}${hex3}`)
+        }else if(isHEX){
+            let arr1=inp.replace("#","")
+            let r=parseInt(arr1.slice(0,2),16)
+            let g=parseInt(arr1.slice(2,4),16)
+            let b=parseInt(arr1.slice(4,6),16)
+            e(`rgb(${r},${g},${b})`)
+        }else{
+            e("error")
+        }
+    }
+    function e(reply){
+        result.textContent=reply
+    }
+</script>
+<style>
+
+</style>

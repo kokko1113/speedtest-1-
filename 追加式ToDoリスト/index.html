@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="New task">
+    <button onclick="addList()">Add</button>
+
+    <div class="lists"></div>
+</body>
+
+</html>
+<script>
+    const lists = document.querySelector(".lists")
+
+    function addList() {
+        const inp = document.querySelector("input").value
+        if (inp == "") return console.log("入力してください");
+        //何も入力されていなかったら弾く
+        const list = document.createElement("div")
+        const text = document.createElement("p")
+        const comp = document.createElement("button")
+        const del = document.createElement("button")
+        list.style.display="flex"
+        text.textContent = inp
+        comp.textContent = "Complete"
+        del.textContent = "Delete"
+        comp.addEventListener("click",()=>{
+            text.style.textDecoration="line-through"
+        })
+        del.addEventListener("click",()=>{
+            list.remove()
+        })
+        list.appendChild(text)
+        list.appendChild(comp)
+        list.appendChild(del)
+        lists.appendChild(list)
+    }
+</script>
+<style>
+
+</style>

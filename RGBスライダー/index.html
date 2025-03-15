@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="back"></div>
+    R:<input type="range" class="red" max="255">
+    G:<input type="range" class="green" max="255">
+    B:<input type="range" class="blue" max="255">
+</body>
+
+</html>
+<style>
+    .back{
+        width: 300px;
+        height: 200px;
+        border: 1px solid black;
+    }
+</style>
+<script>
+    const back=document.querySelector(".back")
+    const red=document.querySelector(".red")
+    const green=document.querySelector(".green")
+    const blue=document.querySelector(".blue")
+
+    a()
+    red.addEventListener("input",()=>{
+        a()
+    })
+    green.addEventListener("input",()=>{
+        a()
+    })
+    blue.addEventListener("input",()=>{
+        a()
+    })
+    function a(){
+        back.textContent=`rgb(${red.value},${green.value},${blue.value})`
+        back.style.background=`rgb(${red.value},${green.value},${blue.value})`
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<style>
+    div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        
+        animation: anima 2s infinite;
+    }
+    @keyframes anima{
+        0%{
+            border-top: none;
+            border-bottom: calc(50px * sin(60deg)) solid red;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+        50%{
+            border-top: 50px solid yellow;
+            border-bottom: 50px solid yellow;
+            border-left: 50px solid yellow;
+            border-right: 50px solid yellow;
+        }
+        100%{
+            border-top: none;
+            border-bottom: calc(100px * sin(60deg)) solid red;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+    }
+</style>
+<script>
+    
+</script>

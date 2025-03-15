@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas class="canvas" width="300" height="300" style="border: 1px solid black;"></canvas>
+    <button onclick="hozon()">sss</button>
+</body>
+
+</html>
+<script>
+    const canvas=document.querySelector(".canvas")
+    const ctx=canvas.getContext("2d")
+
+    ctx.fillStyle="white"
+    ctx.fillRect(0,0,300,300)
+    let flag=false
+    canvas.addEventListener("mousedown",()=>{
+        flag=true
+        ctx.beginPath()
+        ctx.lineWidth=2
+        ctx.strokeStyle="black"
+        ctx.moveTo(e.offsetX,e.offsetY)
+    })
+    canvas.addEventListener("mousemove",(e)=>{
+        if(!flag) return
+        ctx.lineTo(e.offsetX,e.offsetY)
+        ctx.stroke()
+    })
+    canvas.addEventListener("mouseup",()=>{
+        flag=false
+    })
+    function hozon(){
+        const a=document.createElement("a")
+        a.href=canvas.toDataURL("image/png")
+        a.download="test.png"
+        a.click()
+    }
+</script>
+<style>
+    
+</style>

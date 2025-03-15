@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dots"></div>
+    <div class="btns"></div>
+</body>
+
+</html>
+<style>
+    .dot{
+        width: 10px;
+        height: 10px;
+        border: .1px solid gray;
+    }
+    .dots{
+        width: 185px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btns{
+        width: 100px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btn{
+        width: 25px;
+        height: 25px;
+        border: 2.5px solid gray;
+        border-radius: 50%;
+    }
+</style>
+<script>
+    const dots=document.querySelector(".dots")
+    const btns=document.querySelector(".btns")
+    let color="black"
+
+    const colors=["black","red","blue","green","orange"]
+    for(let i=0;i<colors.length;i++){
+        const btn=document.createElement("div")
+        btn.classList.add("btn")
+        btn.style.background=colors[i]
+        btn.addEventListener("click",()=>{
+            selectColor(colors[i])
+        })
+        btns.appendChild(btn)
+    }
+
+    for(let i=0;i<256;i++){
+        const dot=document.createElement("div")
+        dot.classList.add("dot")
+        dot.addEventListener("click",()=>{
+            padColor(i)
+        })
+        dots.appendChild(dot)
+    }
+    function selectColor(a){
+        color=a
+    }
+    function padColor(index){
+        const arrDot=document.querySelectorAll(".dot")
+        arrDot[index].style.background=color
+    }
+
+
+</script>

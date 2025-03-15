@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./image.png" alt="">
+    <div class="back"></div>
+</body>
+
+</html>
+<script>
+    const img = document.querySelector("img")
+    const back = document.querySelector(".back")
+
+    let x=100
+    img.addEventListener("mousemove",(e)=>{
+        back.style.background=
+        `radial-gradient(circle at ${e.clientX}px ${e.clientY}px,rgb(0,0,0,0) ${x}px,rgb(0,0,0,0.5) ${x+30}px,rgb(0,0,0,0.5))`
+    })
+    img.addEventListener("mouseleave",()=>{
+        back.style.background="none"
+    })
+    img.addEventListener("wheel",(e)=>{
+        if(e.deltaY<0){
+            x+=5
+        }else{
+            x-=5
+        }
+        if(x<10){
+            x=10
+        }
+    })
+    
+</script>
+<style>
+img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+</style>

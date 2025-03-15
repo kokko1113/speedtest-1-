@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="all">
+        <div class="a">
+            <h1>2024</h1>
+            <p>aaaaaaaaaaa</p>
+        </div>
+        <div class="a">
+            <h1>2024</h1>
+            <p>aaaaaaaaaaa</p>
+        </div>
+        <div class="a">
+            <h1>2024</h1>
+            <p>aaaaaaaaaaa</p>
+        </div>
+        <div class="a">
+            <h1>2024</h1>
+            <p>aaaaaaaaaaa</p>
+        </div>
+        <div class="a">
+            <h1>2024</h1>
+            <p>aaaaaaaaaaa</p>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+</script>
+<style>
+    *{
+        margin: 0;
+    }
+    .all{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        translate: -50% 0;
+        width: 200px;
+    }
+    .a{
+        width: 150px;
+        position: relative;
+        padding: 30px;
+    }
+    .a:nth-of-type(even){
+        translate: 100% 0;
+    }
+    .a:nth-of-type(odd)::after{
+        content: "";
+        width: 5px;
+        height: 100%;
+        background: gray;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        translate:-50% 0;
+    }
+    .a:nth-of-type(odd)::before{
+        content: "";
+        width: 25px;
+        height: 25px;
+        background: gray;
+        border: 3px solid white;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        translate:-50% -50%;
+        z-index: 100;
+    }
+    .a:nth-of-type(even)::after{
+        content: "";
+        width: 5px;
+        height: 100%;
+        background: gray;
+        position: absolute;
+        top: 0;
+        left: 0%;
+        translate:-50% 0;
+    }
+    .a:nth-of-type(even)::before{
+        content: "";
+        width: 25px;
+        height: 25px;
+        background: gray;
+        border: 3px solid white;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        translate:-50% -50%;
+        z-index: 100;
+    }
+</style>

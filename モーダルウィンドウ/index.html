@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>dfmrocisnivjkcmsrov</h1>
+    <p>dfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>
+    <button onclick="toggle()">open</button>
+    <div class="modal none">
+        <h2>モーダルウィンドウ</h2>
+        <button onclick="toggle()">close</button>
+    </div>
+    <div class="back none" onclick="toggle()"></div>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+    }
+
+    body {
+        height: 200vh;
+    }
+
+    .modal {
+        width: 200px;
+        height: 140px;
+        background: pink;
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    .back {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.484);
+        z-index: 50;
+    }
+
+    .none {
+        display: none;
+    }
+    .hidden{
+        overflow: hidden;
+    }
+</style>
+<script>
+    const modal = document.querySelector(".modal")
+    const back = document.querySelector(".back")
+
+    function toggle() {
+        modal.classList.toggle("none")
+        back.classList.toggle("none")
+        document.body.classList.toggle("hidden")
+    }
+</script>

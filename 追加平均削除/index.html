@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number">
+    <button onclick="addTask()">Add</button>
+    <p class="result"></p>
+    <div class="lists"></div>
+</body>
+
+</html>
+<script>
+    const text = document.querySelector(".text")
+    const lists = document.querySelector(".lists")
+    const result = document.querySelector(".result")
+    function addTask() {
+        const input = document.querySelector("input").value
+        if(input=="") return
+        const div = document.createElement("div")
+        const p = document.createElement("p")
+        const del = document.createElement("button")
+        p.textContent = input
+        del.textContent = "Delete"
+        div.style.display = "flex"
+        div.classList.add("list")
+        del.addEventListener("click", () => {
+            div.remove()
+            calc()
+        })
+        div.appendChild(p)
+        div.appendChild(del)
+        lists.appendChild(div)
+        calc()
+    }
+    function calc() {
+        const arr = document.querySelectorAll(".list")
+        let sum = 0
+        arr.forEach(element => {
+            sum += Number(element.childNodes[0].textContent)
+        });
+        console.log(sum);
+        
+        let ave = sum / arr.length
+        result.textContent="平均値:"+ave
+    }
+</script>
+<style>
+
+</style>

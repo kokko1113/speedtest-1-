@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="text">dfharuvnraoineanokafe</p>
+    <input type="text" class="input">
+    <button onclick="a()">kensaku</button>
+</body>
+</html>
+<script>
+    const text=document.querySelector(".text")
+    
+    function a(){
+        const input=document.querySelector("input").value
+        text.innerHTML=text.textContent.replace(new RegExp(input,"g"),`<span>${input}</span>`)
+        const spans=document.querySelectorAll("span")
+        spans.forEach(element => {
+            element.style.background=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+        });
+    }
+</script>

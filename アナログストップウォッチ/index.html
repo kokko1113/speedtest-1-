@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="clock"></div>
+    <div class="needle"></div>
+    <button onclick="sutato()">start</button>
+    <button onclick="sutoppu()">stop</button>
+    <button onclick="risetto()">reset</button>
+</body>
+
+</html>
+<style>
+    .clock{
+        width: 300px;
+        height: 300px;
+        background: rgb(78, 71, 184);
+        position: relative;
+    }
+    .needle{
+        height: 150px;
+        width: 3px;
+        transform-origin: bottom;
+        position: absolute;
+        top: 8px;
+        left: 150px;
+        background: red;
+    }
+</style>
+<script>
+    const needle=document.querySelector(".needle")
+
+    let x=0
+    let id
+    let flag=false
+    function sutato(){
+        if(!flag){
+            flag=true
+            id=setInterval(() => {
+                x+=6
+                n()
+            }, 1000);
+        }
+    }
+    function sutoppu(){
+        clearInterval(id)
+        flag=false
+        n()
+    }
+    function risetto(){
+        clearInterval(id)
+        flag=false
+        x=0
+        n()
+    }
+    function n(){
+        needle.style.rotate=`${x}deg`
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number">
+    <button onclick="seisei()">seisei</button>
+    <p class="text"></p>
+</body>
+
+</html>
+<script>
+    const fonts="ABSFHRIFDdsfjerinkns233456709"
+    const text=document.querySelector(".text")
+    function seisei(){
+        const inp=document.querySelector("input").value
+        text.textContent=""
+        for(let i=0;i<inp;i++){
+            text.textContent+=fonts.split("")[Math.floor(Math.random()*fonts.length)]
+        }
+    }
+</script>
+<style>
+
+</style>

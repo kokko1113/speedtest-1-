@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button onclick="hozon()">Save</button>
+</body>
+
+</html>
+<script>
+    function hozon(){
+        const input=document.querySelector("input").value
+        const a=document.createElement("a")
+        a.href=URL.createObjectURL(new Blob([input],{type:"text/plain"}))
+        a.download="myText.txt"
+        a.click()
+    }
+</script>
+<style>
+    
+</style>

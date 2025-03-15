@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    for(let i=0;i<10;i++){
+        const a=document.createElement("div")
+        a.style.background=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+        a.style.width="80px"
+        a.style.height="80px"
+        a.style.borderRadius="50%"
+        a.style.position="absolute"
+        a.style.top=Math.random()*(window.innerHeight-80)+"px"
+        a.style.left=Math.random()*(window.innerWidth-80)+"px"
+        document.body.appendChild(a)
+    }
+</script>
