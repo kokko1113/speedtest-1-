@@ -8,38 +8,27 @@
 </head>
 
 <body>
-    <canvas class="canvas" width="300" height="300" style="border: 1px solid black;"></canvas>
-    <button onclick="hozon()">sss</button>
+    <input type="text" class="inp">
+    <button onclick="henkan()">henkan</button>
+    <p class="result"></p>
 </body>
 
 </html>
 <script>
-    const canvas=document.querySelector(".canvas")
-    const ctx=canvas.getContext("2d")
-
-    ctx.fillStyle="white"
-    ctx.fillRect(0,0,300,300)
-    let flag=false
-    canvas.addEventListener("mousedown",()=>{
-        flag=true
-        ctx.beginPath()
-        ctx.lineWidth=2
-        ctx.strokeStyle="black"
-        ctx.moveTo(e.offsetX,e.offsetY)
-    })
-    canvas.addEventListener("mousemove",(e)=>{
-        if(!flag) return
-        ctx.lineTo(e.offsetX,e.offsetY)
-        ctx.stroke()
-    })
-    canvas.addEventListener("mouseup",()=>{
-        flag=false
-    })
-    function hozon(){
-        const a=document.createElement("a")
-        a.href=canvas.toDataURL("image/png")
-        a.download="test.png"
-        a.click()
+    const result=document.querySelector(".result")
+    function henkan(){
+        let inp=document.querySelector(".inp").value
+        const isRGB=inp.startsWith("rgb")
+        const isHEX=inp.startsWith("#")
+        if(isRGB){
+            inp=inp.replace("rgb(","")
+            inp=inp.replace(")","")
+            let arr=inp.explode(",")
+            let red =Number(arr[0]).toString(16).toUpperCase()
+            let green =Number(arr[1]).toString(16).toUpperCase()
+            let blue =Number(arr[2]).toString(16).toUpperCase()
+            result.textContent="#"+red+green+blue
+        }
     }
 </script>
 <style>

@@ -8,46 +8,64 @@
 </head>
 
 <body>
-    <input type="number">
-    <button onclick="addTask()">Add</button>
-    <p class="result"></p>
+    <button onclick="addList()">Add</button>
+    <p class="ave"></p>
     <div class="lists"></div>
 </body>
 
 </html>
 <script>
-    const text = document.querySelector(".text")
-    const lists = document.querySelector(".lists")
-    const result = document.querySelector(".result")
-    function addTask() {
-        const input = document.querySelector("input").value
-        if(input=="") return
-        const div = document.createElement("div")
-        const p = document.createElement("p")
-        const del = document.createElement("button")
-        p.textContent = input
-        del.textContent = "Delete"
-        div.style.display = "flex"
-        div.classList.add("list")
-        del.addEventListener("click", () => {
-            div.remove()
-            calc()
+    const lists=document.querySelector(".lists")
+    const ave=document.querySelector(".ave")
+
+    addList()
+    function addList(){
+        const list=document.createElement("div")
+        const input=document.createElement("input")
+        const btn=document.createElement("button")
+        list.classList.add("list")
+        btn.textContent="Delete"
+        btn.addEventListener("click",()=>{
+            const flag=checkListNum()
+            console.log(flag);
+            
+            if(flag){
+                list.remove()
+                calcAverage()
+            }
         })
-        div.appendChild(p)
-        div.appendChild(del)
-        lists.appendChild(div)
-        calc()
+        input.type = "number"
+        input.value=0
+        input.addEventListener("input",()=>{
+            console.log("input");
+            
+            calcAverage()
+        })
+        list.appendChild(input)
+        list.appendChild(btn)
+        lists.appendChild(list)
+        calcAverage()
     }
-    function calc() {
-        const arr = document.querySelectorAll(".list")
-        let sum = 0
-        arr.forEach(element => {
-            sum += Number(element.childNodes[0].textContent)
+
+    function checkListNum(){
+        const listNum = document.querySelectorAll(".list")
+        if(listNum.length>1){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    function calcAverage(){
+        const listNum = document.querySelectorAll(".list")
+        let sum =0
+        listNum.forEach(element => {
+            sum+=Number(element.querySelector("input").value)
         });
-        console.log(sum);
+        const average=sum/listNum.length
+        console.log(listNum);
         
-        let ave = sum / arr.length
-        result.textContent="平均値:"+ave
+        ave.textContent="平均値:"+average
     }
 </script>
 <style>

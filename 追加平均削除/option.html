@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="addList()">Add</button>
+    <p class="ave"></p>
+    <p class="siki"></p>
+    <div class="lists"></div>
+</body>
+
+</html>
+<script>
+    const lists = document.querySelector(".lists")
+    const ave = document.querySelector(".ave")
+    const siki = document.querySelector(".siki")
+    const arr = ["+", "-"]
+
+    addList()
+    function generateRow() {
+        const list = document.createElement("div")
+        const input = document.createElement("input")
+        const btn = document.createElement("button")
+        const add = document.createElement("button")
+        list.classList.add("list")
+        add.textContent = "Add"
+        btn.textContent = "Delete"
+        btn.addEventListener("click", () => {
+            const flag = checkListNum()
+            if (flag) {
+                list.remove()
+                calcAverage()
+            }
+        })
+        input.type = "number"
+        input.value = 0
+        input.addEventListener("input", () => {
+            calcAverage()
+        })
+        add.addEventListener("click", () => {
+            console.log("add");
+
+            list.after(generateRow())
+            calcAverage()
+        })
+        list.appendChild(input)
+        list.appendChild(btn)
+        list.appendChild(add)
+        return list
+    }
+    function addList() {
+        const list = generateRow()
+        lists.appendChild(list)
+        calcAverage()
+    }
+
+    function checkListNum() {
+        const listNum = document.querySelectorAll(".list")
+        if (listNum.length > 1) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function calcAverage() {
+        const listNum = document.querySelectorAll(".list")
+        let sum = 0
+        let calc_siki = ""
+        listNum.forEach((element, i) => {
+            sum += Number(element.querySelector("input").value)
+            if (element.querySelector("input").value >= 0) {
+                calc_siki += String(element.querySelector("input").value)
+            } else {
+                calc_siki += "(" + String(element.querySelector("input").value) + ")"
+            }
+            calc_siki += arr[i % 2]
+        });
+        const average = sum / listNum.length
+        ave.textContent = "平均値:" + average
+        const sub = calc_siki.substring(0, calc_siki.length - 1)
+        const aaa = eval(sub)
+        siki.textContent = sub + "=" + String(aaa)
+    }
+</script>
+<style>
+
+</style>
