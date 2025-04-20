@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="aa">text</div>
+    <div class="bb">text</div>
+</body>
+</html>
+<style>
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(red,pink);
+        backface-visibility: hidden;
+    }
+    .aa{
+        animation: aa 2s infinite;
+    }
+    .bb{
+        /* background: linear-gradient(blue,skyblue); */
+        animation: bb 2s infinite;
+    }
+    @keyframes aa {
+        0%{
+            transform: rotateY(0deg);
+        }
+        50%{
+            transform: rotateY(180deg);
+        }
+        100%{
+            transform: rotateY(0deg);
+        }
+    }
+    @keyframes bb {
+        0%{
+            transform: rotateY(180deg);
+        }
+        50%{
+            transform: rotateY(0deg);
+        }
+        100%{
+            
+            transform: rotateY(180deg);
+        }
+    }
+</style>
