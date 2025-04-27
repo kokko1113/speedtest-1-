@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+<script>
+    
+</script>
+<style>
+    div{
+        width: 140px;
+        height: 100px;
+        background: red;
+        clip-path: polygon(50px calc(100px - 100px * sin(60deg)),100px 100px,50px 100px,0px 100px);
+        animation: anima 2s infinite;
+    }
+    @keyframes anima{
+        0%{
+            background: red;
+            clip-path: polygon(50px calc(100px - 100px * sin(60deg)),100px 100px,50px 100px,0px 100px);
+        }
+        50%{
+            background: yellowgreen;
+            clip-path: polygon(70px 0px,140px 50px,70px 100px,0px 50px);
+        }
+        100%{
+            background: red;
+            clip-path: polygon(50px calc(100px - 100px * sin(60deg)),100px 100px,50px 100px,0px 100px);
+        }
+    }
+</style>
