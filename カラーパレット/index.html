@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    for (let i = 0; i < 5; i++) {
+        const div = document.createElement("div")
+        div.style.width = 150 + "px"
+        div.style.height = 150 + "px"
+        const red = Math.floor(Math.random() * 255)
+        const green = Math.floor(Math.random() * 255)
+        const blue = Math.floor(Math.random() * 255)
+        if (red < 40 || green < 40 || blue < 40) {
+            div.style.color = "white"
+        }
+        div.style.background = `rgb(${red},${green},${blue})`
+        div.textContent = `rgb(${red},${green},${blue})`
+        document.body.appendChild(div)
+    }
+</script>

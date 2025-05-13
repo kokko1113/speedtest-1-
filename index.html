@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    <div class="clock">
-
-    </div>
+    <input type="text" class="inp">
+    <button onclick="henkan()">henkan</button>
+    <p class="text"></p>
 </body>
-
 </html>
 <script>
-    const clock = document.querySelector(".clock")
-    let startTime = new Date();
-
-    // aaa()
-
-    function aaa() {
-        const now = new Date()
-        let time = now - startTime
-        const hour = Math.floor(time / (1000 * 60 * 60))
-        time %= 1000 * 60 * 60
-        const min = Math.floor(time / (1000 * 60))
-        time %= 1000 * 60
-        const sec = Math.floor(time / 1000)
-        time %= 1000
-        const ms = time.toString().slice(0, 2)
-        clock.textContent = hour + ":" + min + ":" + sec + "." + ms;
-        requestAnimationFrame(aaa)
+    const text=document.querySelector(".text")
+    
+    function henkan(){
+        let inp=document.querySelector(".inp").value
+        const isRGB=inp.startsWith("rgb")
+        const isHEX=inp.startsWith("#")
+        if(isRGB){
+            inp=inp.replace("rgb(","")
+            inp=inp.replace(")","")
+            const arr=inp.explode(",")
+            const red=Number(arr[0]).toString(16).toUpperCase()
+            const green=Number(arr[1]).toString(16).toUpperCase()
+            const blue=Number(arr[2]).toString(16).toUpperCase()
+            text.textContent="#"+red+green+blue
+        }else if(isHEX){
+            inp=inp.replace("#","")
+            const red=parseInt(inp.slice(0,2),16)
+            const green=parseInt(inp.slice(2,4),16)
+            const blue=parseInt(inp.slice(4,6),16)
+            text.textContent="rgb("+red+","+green+","+blue+")"
+        }
     }
-    aaa()
 </script>
-<style>
-
-</style>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <section></section>
+        <section></section>
+    </div>
+</body>
+</html>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+    section:nth-of-type(1){
+        width: 100px;
+        height: 40px;
+        background-color: blue;
+        cursor: grab;
+    }
+    section:nth-of-type(1):active{
+        cursor: grabbing;
+    }
+    section:nth-of-type(2){
+        width: 100px;
+        height: 60px;
+        background-color: skyblue;
+    }
+</style>
+<script>
+    const div=document.querySelector("div")
+
+    let flag=false
+    let x=0
+    let y=0
+    div.addEventListener("mousedown",(e)=>{
+        flag=true
+        x=e.offsetX
+        y=e.offsetY
+    })
+    window.addEventListener("mouseup",()=>{
+        flag=false
+    })
+    window.addEventListener("mousemove",(e)=>{
+        if(flag){
+            div.style.top=(e.clientY-y)+"px"
+            div.style.left=(e.clientX-x)+"px"
+        }
+    })
+</script>
